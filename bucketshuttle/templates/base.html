@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>bucketshuttle</title>
+    <style>
+    body { background-color: #efefef; padding: 0; margin: 0; }
+    div { width: 500px; margin: auto; padding: 1em; background-color: white;
+          font-family: sans-serif; }
+    h1 { margin-top: 0; }
+    a { text-decoration: none; }
+    form.debug textarea { font-family: monospace; font-size: smaller; }
+    time { color: gray; }
+    time:before { content: '('; }
+    time:after { content: ')'; }
+    .build-log { color: gray; text-transform: uppercase; }
+    .build-log:before { content: '['; }
+    .build-log:after { content: ']'; }
+    </style>
+  </head>
+  <body>
+    <div>
+      <h1>bucketshuttle</h1>
+      {% block body %}
+      {% endblock %}
+    </div>
+  </body>
+</html>
