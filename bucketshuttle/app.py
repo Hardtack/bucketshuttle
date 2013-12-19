@@ -162,7 +162,7 @@ def upload():
         dirname, filename = os.path.split(name)
         directory = os.path.join(dirpath, dirname)
         if not os.path.exists(directory):
-            os.mkdir(directory)
+            os.makedirs(directory)
         with open(os.path.join(directory, filename), 'w') as f:
             f.write(zfile.read(name))
     response = make_response('true', 202)
