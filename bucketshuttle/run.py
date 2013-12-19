@@ -61,17 +61,6 @@ def main(*args, **kwargs):
         app.wsgi_app = ForcingHTTPSMiddleware(app.wsgi_app)
     if options.proxy_fix:
         app.wsgi_app = ProxyFix(app.wsgi_app)
-    if not app.config.get('PUBLIC_REPOSITORY', False):
-        username = raw_input('Username for bitbucket : ')
-        password = getpass.getpass('Password for bitbucket : ')
-        sys.stdout.flush()
-    else:
-        username = None
-        password = None
-    app.config.update({
-        'BITBUCKET_USERNAME': username,
-        'BITBUCKET_PASSWORD': password,
-    })
     app.config['SAVE_DIRECTORY'] = os.path.abspath(
         app.config['SAVE_DIRECTORY']
     )
