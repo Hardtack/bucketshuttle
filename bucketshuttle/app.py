@@ -100,8 +100,7 @@ def home():
         return next
     head = get_head()
     if head is None:
-        hook_url = url_for('post_receive_hook', _external=True)
-        return render_template('empty.html', hook_url=hook_url)
+        return render_template('empty.html')
     save_dir = current_app.config['SAVE_DIRECTORY']
     refs = {}
     time_fmt = '%Y-%m-%dT%H:%M:%SZ'
