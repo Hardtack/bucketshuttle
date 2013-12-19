@@ -153,6 +153,8 @@ def auth(resp):
 def upload():
     commit = request.form['commit']
     data = request.files['file']
+
+    # Unzip
     zfile = zipfile.ZipFile(file=data)
     save_dir = current_app.config['SAVE_DIRECTORY']
     dirpath = os.path.join(save_dir, commit)
@@ -165,6 +167,10 @@ def upload():
             os.makedirs(directory)
         with open(os.path.join(directory, filename), 'w') as f:
             f.write(zfile.read(name))
+    # Update head
+    with open(os.path.join(save_dir, 'head.txt'), 'w') as f:
+        f.write(commit)
+
     response = make_response('true', 202)
     response.mimetype = 'application/json'
     return response
